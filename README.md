@@ -1,6 +1,7 @@
 #Web Service
 This web service manage pool of child-item.
 `
+<br>
 [3 OPTIONS:]
 
 1.Do like to item for specific child.
@@ -14,21 +15,22 @@ This web service manage pool of child-item.
 ##Usage:
 
 ###To Do like to item for specific child:
-
+<br>
 http://localhost:8080//like_child_item/{mom_name}/{child_name}/{item}
-`
+
+<br>
 Replace:
 1. {mom_name} with string (ex: "nili", "hila" ...)
 2. {child_name} with string (ex: "ben", "shir" ...)
 3. {item} with string (ex: "bilbi", "sinderella" ...)
 
 
-``
+```
 EXAMPLE:
 http://localhost:8080/like_child_item/nili/shir/bilbi
-`
+<br>
 JSON response example:
-`
+
 [{
     _id: "575be5a8dcba0f71fd3fc3c2",
     id: 111,
