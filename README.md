@@ -18,17 +18,19 @@ This web service manage pool of child-item.
 <br>
 http://localhost:8080//like_child_item/{mom_name}/{child_name}/{item}
 
-<br>
 Replace:
+
 1. {mom_name} with string (ex: "nili", "hila" ...)
+
 2. {child_name} with string (ex: "ben", "shir" ...)
+
 3. {item} with string (ex: "bilbi", "sinderella" ...)
 
 
 ```
 EXAMPLE:
 http://localhost:8080/like_child_item/nili/shir/bilbi
-<br>
+
 JSON response example:
 
 [{
@@ -62,22 +64,28 @@ JSON response example:
         }
     ]
 }]
-``
+```
+
+
 ###To Add child to MOM-USER:
+<br>
 http://localhost:8080/add_child/{mom_id}/{child_name}/{child_age}
-`
+
 Replace:
+
 1. {mom_id} with some number (ex: "111", "222" ...)
+
 2. {child_name} with string (ex: "ben", "shir" ...)
+
 3. {child_age} with number (ex: 3, 4 ...)
 
 
-``
+```
 EXAMPLE:
 http://localhost:8080/add_child/111/lian/1
-`
+
 JSON response example:
-`
+
 {
     "_id": {
         "$oid": "575be5a8dcba0f71fd3fc3c2"
@@ -116,20 +124,24 @@ JSON response example:
         }
     ]
 }
-``
+```
+
 
 ###To Get item By Category and Age:
+<br>
 http://localhost:8080/search_item_by_age/{category}/{child_age}
-`
+
 Replace:
+
 1. {category} with string of: books  or  shows  or  songs.
+
 2. {child_age} with number (ex: 3, 4 ...)
 
-``
 
+```
 EXAMPLE:
 http://localhost:8080/search_item_by_age/books/7
-`
+
 JSON response example:
 [
     {
