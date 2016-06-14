@@ -11,124 +11,143 @@ This web service manage pool of child-item.
 
 Usage:
 
-To Do like to item for specific child:
+****To Do like to item for specific child:****
 
-http://localhost:8080//like_child_item/:mom_name/:child_name/:item
+http://localhost:8080//like_child_item/{mom_name}/{child_name}/{item}
+
+Replace:
+1. {mom_name} with string (ex: "nili", "hila" ...)
+2. {child_name} with string (ex: "ben", "shir" ...)
+3. {item} with string (ex: "bilbi", "sinderella" ...)
+
+
+
 EXAMPLE:
-http://localhost:8080//like_child_item/nili/shir/bilbi
+http://localhost:8080/like_child_item/nili/shir/bilbi
 JSON response example:
 
-[
-    {
-        firstName: "John",
-        lastName: "Doe",
-        id: 3,
-        avarage: "92",
-        year: "2013"
-    },
-    {
-        firstName: "Anna",
-        lastName: "Smith",
-        id: 4,
-        average: "100",
-        year: "2014"
-    },
-    {
-        firstName: "Mor",
-        lastName: "Kasus",
-        id: 1,
-        average: "100",
-        year: "2016"
-    },
-    {
-        firstName: "Yossi",
-        lastName: "Azo",
-        id: 7,
-        average: "98",
-        year: "2016"
-    },
-    {
-        firstName: "Daniel",
-        lastName: "sha",
-        id: 8,
-        average: "94",
-        year: "2013"
-    },
-    {
-        firstName: "Maria",
-        lastName: "lala",
-        id: 9,
-        average: "100",
-        year: "2014"
-    },
-    {
-        firstName: "Dani",
-        lastName: "dan",
-        id: 10,
-        average: "98",
-        year: "2016"
-    },
-    {
-        firstName: "Salah",
-        lastName: "Moalem",
-        id: 11,
-        average: "92",
-        year: "2016"
-    }
-]
-To get student by ID:
+[{
+    _id: "575be5a8dcba0f71fd3fc3c2",
+    id: 111,
+    mom_name: "nili",
+    mail: "nili@gmail.com",
+    children: [
+        {
+        child_name: "shir",
+        child_age: 10,
+        liked_item: [
+        "pinokyo",
+        **"bilbi"**
+        ]
+        },
+        {
+        child_name: "lior",
+        child_age: 1,
+        liked_item: [
+        "dira_leaskir"
+        ]
+        },
+        {
+        child_name: "ben",
+        child_age: 10,
+        liked_item: [
+        "dira_leaskir",
+        "oof gozal"
+        ]
+        }
+    ]
+}]
 
-https://ex1-students-morkasus.herokuapp.com/student/{id}
+****To Add child to MOM-USER:****
+http://localhost:8080/add_child/{mom_id}/{child_name}/{child_age}
 
-Replace {id} with some number (ex: 1, 2 ...)
+Replace:
+1. {mom_id} with some number (ex: "111", "222" ...)
+2. {child_name} with string (ex: "ben", "shir" ...)
+3. {child_age} with number (ex: 3, 4 ...)
 
+
+
+EXAMPLE:
+http://localhost:8080/add_child/111/lian/1
 JSON response example:
 
 {
-    firstName: "John",
-    lastName: "Doe",
-    id: 3,
-    avarage: "92",
-    year: "2013"
+    "_id": {
+        "$oid": "575be5a8dcba0f71fd3fc3c2"
+    },
+    "id": 111,
+    "mom_name": "nili",
+    "mail": "hila@gmail.com",
+    "children": [
+        {
+            "child_name": "shir",
+            "child_age": 10,
+            "liked_item": [
+                "pinokyo",
+                "bilbi"
+            ]
+        },
+        {
+            "child_name": "lior",
+            "child_age": 1,
+            "liked_item": [
+                "dira_leaskir"
+            ]
+        },
+        {
+            "child_name": "ben",
+            "child_age": 10,
+            "liked_item": [
+                "dira_leaskir",
+                "oof gozal"
+            ]
+        },
+        {
+           ** "child_name": "lian",**
+           ** "child_age": 1,**
+           ** "liked_item": []**
+        }
+    ]
 }
-To get all excellence students by Year:
 
-https://ex1-students-morkasus.herokuapp.com/studentsyear/{year}
 
-Replace {year} with some number (ex: 2016, 2015, ...)
 
+****To Get item By Category and Age:****
+http://localhost:8080/search_item_by_age/{category}/{child_age}
+
+Replace:
+1. {category} with string of: books  or  shows  or  songs.
+2. {child_age} with number (ex: 3, 4 ...)
+
+
+
+EXAMPLE:
+http://localhost:8080/search_item_by_age/books/7
 JSON response example:
-
 [
     {
-        firstName: "Mor",
-        lastName: "Kasus",
+        _id: "575dc20cdcba0f71fd401fa6",
         id: 1,
-        average: "100",
-        year: "2016"
+        type: "books",
+        name: "dira leaskir",
+        author: "lea goldberg",
+        younge_age: 4,
+        old_age: 10,
+        img: "dira_leaskir"
     },
     {
-        firstName: "Yossi",
-        lastName: "Azo",
-        id: 7,
-        average: "98",
-        year: "2016"
-    },
-    {
-        firstName: "Dani",
-        lastName: "dan",
-        id: 10,
-        average: "98",
-        year: "2016"
-    },
-    {
-        firstName: "Salah",
-        lastName: "Moalem",
-        id: 11,
-        average: "92",
-        year: "2016"
+        _id: "575dc250dcba0f71fd401fb2",
+        id: 2,
+        type: "books",
+        name: "5balonim",
+        author: "gil noiman",
+        younge_age: 6,
+        old_age: 9,
+        img: "5balonim"
     }
 ]
+
 Author
 
 Inbar Takdim
