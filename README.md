@@ -16,7 +16,7 @@ This web service manage pool of child-item.
 
 ###To Do like to item for specific child:
 <br>
-http://localhost:8080//like_child_item/{mom_name}/{child_name}/{item}
+http://localhost:8080/like_child_item/{mom_name}/{child_name}/{item}
 
 Replace:
 

@@ -1,11 +1,25 @@
 {
-  "name": "inbar",
+  "name": "w_s_1",
   "version": "1.0.0",
-  "description": "",
-  "main": "user.js",
+  "description": "This web service manage pool of child-item.",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
-  "author": "",
-  "license": "ISC"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/InbarTakdim/inbar_web_1.git"
+  },
+  "author": "inbar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/InbarTakdim/inbar_web_1/issues"
+  },
+  "homepage": "https://github.com/InbarTakdim/inbar_web_1#readme",
+  "dependencies": {
+    "express": "^4.13.4",
+    "mongoose": "^4.5.0",
+    "util": "^0.10.3"
+  }
 }
