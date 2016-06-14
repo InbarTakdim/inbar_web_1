@@ -17,6 +17,7 @@ This web service manage pool of child-item.
 ###To Do like to item for specific child:
 <br>
 https://webserver1.herokuapp.com/like_child_item/{mom_name}/{child_name}/{item}
+
 Replace:
 
 1. {mom_name} with string (ex: "nili", "hila" ...)
@@ -69,6 +70,7 @@ JSON response example:
 ###To Add child to MOM-USER:
 <br>
 https://webserver1.herokuapp.com/add_child/{mom_id}/{child_name}/{child_age}
+
 Replace:
 
 1. {mom_id} with some number (ex: "111", "222" ...)
