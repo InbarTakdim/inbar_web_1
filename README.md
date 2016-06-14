@@ -16,8 +16,7 @@ This web service manage pool of child-item.
 
 ###To Do like to item for specific child:
 <br>
-http://localhost:8080/like_child_item/{mom_name}/{child_name}/{item}
-
+https://webserver1.herokuapp.com/like_child_item/{mom_name}/{child_name}/{item}
 Replace:
 
 1. {mom_name} with string (ex: "nili", "hila" ...)
@@ -29,7 +28,7 @@ Replace:
 
 ```
 EXAMPLE:
-http://localhost:8080/like_child_item/nili/shir/bilbi
+https://webserver1.herokuapp.com/like_child_item/nili/shir/bilbi
 
 JSON response example:
 
@@ -69,8 +68,7 @@ JSON response example:
 
 ###To Add child to MOM-USER:
 <br>
-http://localhost:8080/add_child/{mom_id}/{child_name}/{child_age}
-
+https://webserver1.herokuapp.com/add_child/{mom_id}/{child_name}/{child_age}
 Replace:
 
 1. {mom_id} with some number (ex: "111", "222" ...)
@@ -82,8 +80,7 @@ Replace:
 
 ```
 EXAMPLE:
-http://localhost:8080/add_child/111/lian/1
-
+https://webserver1.herokuapp.com/add_child/111/lian/1
 JSON response example:
 
 {
@@ -129,7 +126,7 @@ JSON response example:
 
 ###To Get item By Category and Age:
 <br>
-http://localhost:8080/search_item_by_age/{category}/{child_age}
+https://webserver1.herokuapp.com/search_item_by_age/{category}/{child_age}
 
 Replace:
 
@@ -140,8 +137,7 @@ Replace:
 
 ```
 EXAMPLE:
-http://localhost:8080/search_item_by_age/books/7
-
+https://webserver1.herokuapp.com/search_item_by_age/books/7
 JSON response example:
 [
     {
