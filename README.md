@@ -4,15 +4,15 @@ This web service manage pool of child-item.
 <br>
 [5 OPTIONS:]
 
-1.Do like to item for specific child.
+1)Do like to item for specific child.
 
-2.Add child to MOM-USER. 
+2)Add child to MOM-USER. 
 
-3.Get item By Category and Age.
+3)Get item By Category and Age.
 
-4. Get Mom Data.
+4)Get Mom Data.
 
-5. Get All Users.
+5)Get All Users.
 
 
 
@@ -48,7 +48,7 @@ JSON response example:
         child_age: 10,
         liked_item: [
         "pinokyo",
-        **"bilbi"**
+        "bilbi"
         ]
         },
         {
@@ -121,9 +121,9 @@ JSON response example:
             ]
         },
         {
-           ** "child_name": "lian",**
-           ** "child_age": 1,**
-           ** "liked_item": []**
+            "child_name": "lian",
+            "child_age": 1,
+            "liked_item": []
         }
     ]
 }
