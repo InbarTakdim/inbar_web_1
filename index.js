@@ -48,9 +48,16 @@ app.get('/get_all_users' , function(req,res){
 }); 
 
 
-app.get('/get_items/:category' , function(req,res){
+app.get('/get_items_by_category/:category' , function(req,res){
     
     var category=req.params.category;
-    MyMatcher.get_items(category, res);
+    MyMatcher.get_items_by_category(category, res);
 });
+
+
+app.get('/get_all_items' , function(req,res){
+   
+    MyMatcher.get_all_items(res);
+});
+
 http.createServer(app).listen(process.env.PORT ||8080);
