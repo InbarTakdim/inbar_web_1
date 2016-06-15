@@ -14,12 +14,18 @@ conn.on('error' , function(err){
 module.exports= class Matcher {
   
     constructor()
-    {
+    {}
 
+    get_item_by_id(id, res){
 
-
+      matcher.find({'id':id}).exec(function(err, usr){
+          if(usr.length==0)
+            {res.send("<html><h1>NOTHING AT THIS ID</h1></html>");}
+          else{
+            res.send(usr);
+          }
+      });
     }
-
 
     get_items_by_category(category, res){
       matcher.find({'type':category}).exec(function(err, usr){

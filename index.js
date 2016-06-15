@@ -8,6 +8,14 @@ var userManger=new User();
 var MyMatcher=new Matcher();
 var app=express();
 
+app.all('/', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next();
+ });
+
+
+
 app.get('/like_child_item/:mom_id/:child_name/:item' , function(req,res){
     
     var mom_id=req.params.mom_id;
@@ -59,5 +67,11 @@ app.get('/get_all_items' , function(req,res){
    
     MyMatcher.get_all_items(res);
 });
+
+
+app.get('/get_item_by_id/:id' , function(req,res){
+    var id=req.params.id;
+    MyMatcher.get_item_by_id(id, res);
+}); 
 
 http.createServer(app).listen(process.env.PORT ||8080);

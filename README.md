@@ -2,7 +2,8 @@
 This web service manage pool of child-item.
 
 <br>
-#[7 OPTIONS:]
+
+###[7 OPTIONS:]
 
 1)Do like to item for specific child.
 
@@ -17,6 +18,8 @@ This web service manage pool of child-item.
 6)Get All Items by Category.
 
 7)Get All Items.
+
+8)Get Item by ID.
 
 ##Usage:
 
@@ -368,12 +371,37 @@ JSON response example:
 ```
 
 
+###To Get Item by ID:
+<br>
+https://webserver1.herokuapp.com/get_item_by_id/{id}
+
+Replace:
+
+1. {id} with number (ex: 3, 4 ...)
+
+
+```
+EXAMPLE:
+https://webserver1.herokuapp.com/get_item_by_id/2
+
+JSON response example:
+
+[
+{
+    _id: "575dc250dcba0f71fd401fb2",
+    id: 2,
+    type: "books",
+    name: "5balonim",
+    author: "gil noiman",
+    younge_age: 6,
+    old_age: 9,
+    img: "5balonim"
+}
+]
 
 
 
-
-
-
+```
 
 Author
 
