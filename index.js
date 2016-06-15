@@ -7,14 +7,13 @@ var Matcher=require('./matcher');
 var userManger=new User();
 var MyMatcher=new Matcher();
 var app=express();
-//userManger.like("hila" , "shir", "yu ham" );
 
-app.get('/like_child_item/:mom_name/:child_name/:item' , function(req,res){
+app.get('/like_child_item/:mom_id/:child_name/:item' , function(req,res){
     
-    var mom_name=req.params.mom_name;
+    var mom_id=req.params.mom_id;
     var child_name=req.params.child_name;
     var item=req.params.item;
-    userManger.like(mom_name, child_name, item, res);
+    userManger.like(mom_id, child_name, item, res);
 });
 
 app.get('/add_child/:mom_id/:child_name/:child_age' , function(req,res){
@@ -38,11 +37,14 @@ app.get('/search_item_by_age/:category/:child_age' , function(req,res){
 
 });
 
-/*
-app.get('/' , function(req,res){
-    
-    res.send("<html><h1>WELCOME TO SHENKAR COLLEGE!</h1></html>");
-        
+
+app.get('/get_mother/:mom_id' , function(req,res){
+    var mom_id=req.params.mom_id;
+    userManger.get_mother(mom_id, res);
 });
-*/
+
+app.get('/get_all_users' , function(req,res){
+    userManger.get_all_users(res);
+}); 
+
 http.createServer(app).listen(process.env.PORT ||8080);
