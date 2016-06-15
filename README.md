@@ -3,7 +3,7 @@ This web service manage pool of child-item.
 
 <br>
 
-###[7 OPTIONS:]
+###8 OPTIONS:
 
 1)Do like to item for specific child.
 
