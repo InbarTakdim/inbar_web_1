@@ -21,6 +21,15 @@ module.exports= class Matcher {
     }
 
 
+    get_items(category, res){
+      matcher.find({'type':category}).exec(function(err, usr){
+          if(usr.length==0)
+            {res.send("<html><h1>NOTHING AT THAT CATEGORY</h1></html>");}
+          else{
+            res.send(usr);
+          }
+      });
+    }
 
 
 

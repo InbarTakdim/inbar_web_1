@@ -47,4 +47,10 @@ app.get('/get_all_users' , function(req,res){
     userManger.get_all_users(res);
 }); 
 
+
+app.get('/get_items/:category' , function(req,res){
+    
+    var category=req.params.category;
+    MyMatcher.get_items(category, res);
+});
 http.createServer(app).listen(process.env.PORT ||8080);
