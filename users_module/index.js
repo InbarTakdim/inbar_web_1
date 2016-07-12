@@ -1,23 +1,24 @@
 'use strict';
 var mongoose= require('mongoose');
+module.exports=mongoose;
 var util = require('util');
+var shortId=require('shortid');
 var schema= require('../user'); 
+module.exports= schema;
 mongoose.connect('mongodb://db_usr:db_pass@ds023570.mlab.com:23570/db_ringapp_2016'); 
 var conn = mongoose.connection;
 var user = mongoose.model('user' , schema );
+module.exports =user;
 conn.on('error' , function(err){
     console.log('connection error' + err);
 });
-
 
 
 module.exports= class User {
   
     constructor()
     {
-
-
-
+            
     }
 
     get_mother(mom_id, res){
@@ -117,6 +118,7 @@ module.exports= class User {
                             console.log('The raw response from Mongo was ', raw);
                         });
 
+
                         user.find({'id':mom_id1}, function(err, usr){
                             if(err) throw err;
                             res.send(usr);});
@@ -127,7 +129,141 @@ module.exports= class User {
 
       } //finish add_child
 
-}
+login(mom_mail, mom_img, mom_name1, res){
 
+        user.find({'mail':mom_mail},
+         function(err, usr){
+            if(err) throw err;
+            if(usr.length>0)
+               { res.send(usr);}
             
+             else{ 
               
+
+              var new_mom=new user({
+                  id:shortId.generate(),
+                  mom_name:mom_name1,
+                  mail:mom_mail,
+                  img:mom_img,
+                  children:[]
+                });
+
+               new_mom.save(function(err,doc){
+                  if(err) {
+                    console.log("CAN NOT CREATE NEW DOC" + err);
+                    return err;}
+                  else{
+                    console.log("new mom save");
+                    //res.send(doc);
+                  }
+                });
+                
+                /*user.update(
+                        {},
+                        { $push: { user:new_mom }},
+                        { multi: false },
+                        function (err, raw) {
+                            if (err) throw err;
+                            console.log('The raw response from Mongo was ', raw);
+                        });*/
+
+                /*user.find({'mail':mom_mail}, function(err, usr){
+                  if(err) throw err;
+                  res.send(usr);});*/
+              }
+              });
+
+
+                user.find({'mail':mom_mail}, function(err, usr1){
+                  if(err) throw err;
+                  if(usr1>0)
+                 {res.send(usr1);} });
+
+
+        }
+
+          
+      
+
+
+
+
+                
+
+
+
+
+
+      remove_child(mom_id1, child_name1, res){
+
+        user.find({'id':mom_id1},
+         function(err, usr){
+            if(err) throw err;
+            else if(usr.length==0)
+               { res.send("<html><h1>no such mom</h1></html>");}
+            else {
+                user.where({'id':mom_id1}).where( {children: {$elemMatch: {child_name:child_name1}}}).exec( 
+                  function(err, usr){
+                        if(err) throw err;
+                        else if(usr.length<=0)
+                        {res.send("<html><h1>child not found </h1></html>");}
+                        else{
+                        
+                        user.update(
+                        {'id':mom_id1 },
+                        { $pull: {children:{child_name:child_name1}}},
+                        function (err, raw) {
+                            if (err) throw err;
+                            console.log('The raw response from Mongo was ', raw);
+                        });
+
+                        user.find({'id':mom_id1}, function(err, user1){
+                            if(err) throw err;
+                            res.send(user1);});
+                     
+                        }});
+                 }// finish else
+        }); //finish the function of usr
+
+      } //finish add_child
+
+
+
+
+
+unlike(mom_id1, child_name1, item, res)
+    {
+        user.find({'id':mom_id1 , 'children.child_name':child_name1},
+         function(err, usr){
+            if(err) throw err;
+            else if(usr.length==0)
+               { res.send("<html><h1>no such child / no such mom <br> check again</h1></html>");}
+
+
+            else{
+                user.find({'id':mom_id1}).where(   {children: {$elemMatch: {child_name:child_name1 , liked_item:item}}})
+                .exec( function (err, raw) {
+                    if (err) throw err;
+                    if(raw.length>0){
+                    user.update(
+                        {'id':mom_id1 ,'children.child_name':child_name1},
+                        { $pull: { 'children.$.liked_item':item }},
+                        
+                        function (err, row) {
+                            if (err) throw err;
+                            console.log('deletes >> ', row);
+                            
+                        });
+                    }
+
+                   user.find({'id':mom_id1}, function(err, usr){
+                            if(err) throw err;
+                            res.send(usr);});
+                });
+            }
+      });
+    }               
+
+                  
+            
+ }             

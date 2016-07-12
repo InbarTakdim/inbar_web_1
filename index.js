@@ -24,11 +24,35 @@ app.get('/like_child_item/:mom_id/:child_name/:item' , function(req,res){
     userManger.like(mom_id, child_name, item, res);
 });
 
+app.get('/unlike_child_item/:mom_id/:child_name/:item' , function(req,res){
+    
+    var mom_id=req.params.mom_id;
+    var child_name=req.params.child_name;
+    var item=req.params.item;
+    userManger.unlike(mom_id, child_name, item, res);
+});
+
+
+app.get('/login/:mom_mail/:mom_img/:mom_name' , function(req,res){
+    var mom_mail=req.params.mom_mail;
+    var mom_img=req.params.mom_img;
+    var mom_name=req.params.mom_name;
+    userManger.login(mom_mail, mom_img, mom_name, res);
+});
+
+
 app.get('/add_child/:mom_id/:child_name/:child_age' , function(req,res){
     var mom_id=req.params.mom_id;
     var child_name=req.params.child_name;
     var child_age=req.params.child_age;
     userManger.add_child(mom_id, child_name, child_age, res);
+});
+
+
+app.get('/remove_child/:mom_id/:child_name' , function(req,res){
+    var mom_id=req.params.mom_id;
+    var child_name=req.params.child_name;
+    userManger.remove_child(mom_id, child_name, res);
 });
 
 app.get('/search_item_by_age/:category/:child_age' , function(req,res){
@@ -72,6 +96,25 @@ app.get('/get_all_items' , function(req,res){
 app.get('/get_item_by_id/:id' , function(req,res){
     var id=req.params.id;
     MyMatcher.get_item_by_id(id, res);
+}); 
+
+app.get('/set_age_to_item/:itemId/:maxAge/:minAge' , function(req,res){
+    var itemId=req.params.itemId;
+    var maxAge=req.params.maxAge;
+    var minAge=req.params.minAge;
+    MyMatcher.set_age_to_item(itemId, maxAge, minAge, res)
+}); 
+
+
+app.get('/add_new_item/:itemName/:itemCategory/:itemAuthor/:minAge/:maxAge/:itemImg',
+ function(req,res){
+    var itemName=req.params.itemName;
+    var itemCategory=req.params.itemCategory;
+    var itemAuthor=req.params.itemAuthor;
+    var maxAge=req.params.maxAge;
+    var minAge=req.params.minAge;
+    var itemImg=req.params.itemImg;
+    MyMatcher.addNewItem(itemName, itemCategory, itemAuthor, minAge, maxAge, itemImg, res);
 }); 
 
 http.createServer(app).listen(process.env.PORT ||8080);

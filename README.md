@@ -21,6 +21,12 @@ This web service manage pool of child-item.
 
 8)Get Item by ID.
 
+9)Login
+
+10)Delete Child
+
+11)Delete Like
+
 ##Usage:
 
 ###To Do like to item for specific child:
@@ -402,6 +408,126 @@ JSON response example:
 
 
 ```
+
+
+###LOGIN:
+<br>
+https://webserver1.herokuapp.com/login/{mom_mail}/{mom_img}/{mom_name}
+
+Replace:
+
+1. {mom_mail} with string (ex: example@gmail.com )
+2. {mom_img} with string (ex: shira.jpg )
+3. {mom_name} with string (ex: Shira)
+
+*If that mom_mail exists- will not create new user.
+```
+EXAMPLE:
+https://webserver1.herokuapp.com/login/example@gmail.com/shira.jpg/Shira
+
+JSON response example:
+
+
+[
+{
+_id: "5784bc845bd73ef41a067777",
+id: "Sy2KnVzD",
+mom_name: "Shira",
+mail: "example@gmail.com",
+img: "shira.jpg",
+__v: 0,
+children: [ ]
+}
+]
+
+```
+
+
+
+###DELETE CHILD:
+<br>
+https://webserver1.herokuapp.com/remove_child/{mom_id}/{child_name}
+
+Replace:
+
+1. {mom_id} with string (ex: a2d6f8g )
+2. {child_name} with string (ex: Ben)
+
+
+```
+EXAMPLE:
+https://webserver1.herokuapp.com/remove_child/333/Ben
+
+JSON response example:
+
+
+{
+    "_id": {
+        "$oid": "575bc473dcba0f71fd3fbe29"
+    },
+    "id": "333",
+    "mom_name": "hila",
+    "mail": "hila@gmail.com",
+    "img": "try",
+    "children": [
+        {
+            "child_name": "lior",
+            "child_age": 12,
+            "liked_item": [
+                1,
+                3,
+                5
+            ]
+        }
+        
+    ]
+}
+```
+
+###DELETE LIKE FROM SPECIFIC CHILD:
+<br>
+https://webserver1.herokuapp.com/unlike_child_item/{mom_id}/{child_name}/{item_id}
+
+Replace:
+
+1. {mom_id} with string (ex: a2d6f8g )
+2. {child_name} with string (ex: Ben)
+3. {item_id} with string (ex: a1d2d)
+
+
+```
+EXAMPLE:
+https://webserver1.herokuapp.com/unlike_child_item/333/lior/5
+
+JSON response example:
+
+
+{
+    "_id": {
+        "$oid": "575bc473dcba0f71fd3fbe29"
+    },
+    "id": "333",
+    "mom_name": "hila",
+    "mail": "hila@gmail.com",
+    "img": "try",
+    "children": [
+        {
+            "child_name": "lior",
+            "child_age": 12,
+            "liked_item": [
+                1,
+                3
+            ]
+        }
+        
+    ]
+}
+```
+
+
+
+
+
 
 Author
 
