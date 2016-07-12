@@ -27,6 +27,8 @@ This web service manage pool of child-item.
 
 11)Delete Like
 
+12)Set Age to Item
+
 ##Usage:
 
 ###To Do like to item for specific child:
@@ -309,7 +311,7 @@ Replace:
 
 ```
 EXAMPLE:
-https://webserver1.herokuapp.com/get_items/books
+https://webserver1.herokuapp.com/get_items_by_category/books
 
 JSON response example:
 
@@ -347,7 +349,7 @@ https://webserver1.herokuapp.com/get_all_items
 
 ```
 EXAMPLE:
-https://webserver1.herokuapp.com/get_items/books
+https://webserver1.herokuapp.com/get_all_items
 
 JSON response example:
 
@@ -524,9 +526,35 @@ JSON response example:
 }
 ```
 
+###To Set Age To Item:
+<br>
+https://webserver1.herokuapp.com/set_age_to_item/{item_id}/{max_age}/{min_age}
 
+Replace:
 
+1. {item_id} with string (ex: a1vrg53r)
+2. {max_age} with number (ex: 3, 4 ...)
+2. {min_age} with number (ex: 3, 4 ...)
 
+```
+EXAMPLE:
+https://webserver1.herokuapp.com/set_age_to_item/2a9cd5/8/2
+
+JSON response example:
+
+[
+{
+    _id: "575dc250dcba0f71fd401fb2",
+    id: "2a9cd5",
+    type: "books",
+    name: "5balonim",
+    author: "gil noiman",
+    younge_age: 2,
+    old_age: 8,
+    img: "5balonim"
+}
+]
+```
 
 
 Author

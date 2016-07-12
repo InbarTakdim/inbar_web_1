@@ -45,14 +45,14 @@ app.get('/add_child/:mom_id/:child_name/:child_age' , function(req,res){
     var mom_id=req.params.mom_id;
     var child_name=req.params.child_name;
     var child_age=req.params.child_age;
-    userManger.add_child(mom_id, child_name, child_age, res);
+    userManger.addChild(mom_id, child_name, child_age, res);
 });
 
 
 app.get('/remove_child/:mom_id/:child_name' , function(req,res){
     var mom_id=req.params.mom_id;
     var child_name=req.params.child_name;
-    userManger.remove_child(mom_id, child_name, res);
+    userManger.removeChild(mom_id, child_name, res);
 });
 
 app.get('/search_item_by_age/:category/:child_age' , function(req,res){
@@ -72,37 +72,37 @@ app.get('/search_item_by_age/:category/:child_age' , function(req,res){
 
 app.get('/get_mother/:mom_id' , function(req,res){
     var mom_id=req.params.mom_id;
-    userManger.get_mother(mom_id, res);
+    userManger.getMother(mom_id, res);
 });
 
 app.get('/get_all_users' , function(req,res){
-    userManger.get_all_users(res);
+    userManger.getAllUsers(res);
 }); 
 
 
 app.get('/get_items_by_category/:category' , function(req,res){
     
     var category=req.params.category;
-    MyMatcher.get_items_by_category(category, res);
+    MyMatcher.getItemsByCategory(category, res);
 });
 
 
 app.get('/get_all_items' , function(req,res){
    
-    MyMatcher.get_all_items(res);
+    MyMatcher.getAllItems(res);
 });
 
 
 app.get('/get_item_by_id/:id' , function(req,res){
     var id=req.params.id;
-    MyMatcher.get_item_by_id(id, res);
+    MyMatcher.getItemById(id, res);
 }); 
 
 app.get('/set_age_to_item/:itemId/:maxAge/:minAge' , function(req,res){
     var itemId=req.params.itemId;
     var maxAge=req.params.maxAge;
     var minAge=req.params.minAge;
-    MyMatcher.set_age_to_item(itemId, maxAge, minAge, res)
+    MyMatcher.setAgeToItem(itemId, maxAge, minAge, res)
 }); 
 
 
