@@ -569,9 +569,8 @@ Replace:
 
 ```
 EXAMPLE:
-https://webserver1.herokuapp.com/get_image/{1}
+https://webserver1.herokuapp.com/get_image/1
 
-the photo will be displayed.
 ```
 
 
