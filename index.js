@@ -1,6 +1,9 @@
 'use strict';
 
 var http= require('http');
+var url= require('url');
+var fs= require('fs');
+var path= require('path');
 var express=require('express');
 var User= require('./users_module');
 var Matcher=require('./matcher');
@@ -106,15 +109,24 @@ app.get('/set_age_to_item/:itemId/:maxAge/:minAge' , function(req,res){
 }); 
 
 
-app.get('/add_new_item/:itemName/:itemCategory/:itemAuthor/:minAge/:maxAge/:itemImg',
- function(req,res){
-    var itemName=req.params.itemName;
-    var itemCategory=req.params.itemCategory;
-    var itemAuthor=req.params.itemAuthor;
-    var maxAge=req.params.maxAge;
-    var minAge=req.params.minAge;
-    var itemImg=req.params.itemImg;
-    MyMatcher.addNewItem(itemName, itemCategory, itemAuthor, minAge, maxAge, itemImg, res);
-}); 
+app.get('/get_image/:itemId' , function(req,res){
+   // var __dirname;
+    var imageDir =path.join(__dirname , './public/images/');
+    
+    var itemId=req.params.itemId;
+    fs.readFile(imageDir+itemId+".jpg" , function(err , content){
+        console.log("->>>"+imageDir+itemId+".jpg" );
+        if (err) {
+                res.writeHead(400, {'Content-type':'text/html'})
+                console.log(err);
+                res.end("No such image");    
+            } else {
+                //specify the content type in the response will be an image
+                res.writeHead(200,{'Content-type':'image/jpg'});
+                res.end(content);
+            }
+    });
+   
+});
 
 http.createServer(app).listen(process.env.PORT ||8080);

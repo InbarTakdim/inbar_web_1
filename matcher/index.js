@@ -58,47 +58,7 @@ module.exports= class Matcher {
       });
     }
 
-    addNewItem(itemName, itemCategory, itemAuthor, minAge, maxAge, itemImg, res)
-    {
-
-          matcher.find({'name':itemName},
-         function(err, usr){
-            if(err) throw err;
-            if(usr.length>0)
-               { console.log("item "+ itemName+ " exists");
-                res.send(usr);}
-            
-             else{ 
-                //upload img
-
-              var new_item=new matcher({
-                  id:shortId.generate(),
-                  type:itemCategory,
-                  name:itemName,
-                  author:itemAuthor,
-                  younge_age:minAge,
-                  old_age:maxAge,
-                  img:itemImg
-                });
-
-               new_item.save(function(err,doc){
-                  if(err) {
-                    console.log("CAN NOT CREATE NEW DOC" + err);
-                    return err;}
-                  else{
-                    console.log("new item saved");
-                    
-                  }
-                });
-              }
-              });
-
-
-                matcher.find({'name':itemName}, function(err, usr1){
-                  if(err) throw err;
-                  if(usr1>0)
-                 {res.send(usr1);} });
-    }
+    
 
     getAllItems(res){
       matcher.find({}).exec(function(err, usr){

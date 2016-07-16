@@ -29,6 +29,8 @@ This web service manage pool of child-item.
 
 12)Set Age to Item
 
+13)Get Image of Item
+
 ##Usage:
 
 ###To Do like to item for specific child:
@@ -554,6 +556,22 @@ JSON response example:
     img: "5balonim"
 }
 ]
+```
+
+
+###To Get Image of Item:
+<br>
+https://webserver1.herokuapp.com/get_image/{item_id}
+
+Replace:
+
+1. {item_id} with string (ex: a1vrg53r)
+
+```
+EXAMPLE:
+https://webserver1.herokuapp.com/get_image/{1}
+
+the photo will be displayed.
 ```
 
 

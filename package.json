@@ -19,8 +19,11 @@
   "homepage": "https://github.com/InbarTakdim/inbar_web_1#readme",
   "dependencies": {
     "express": "^4.13.4",
+    "fs": "0.0.2",
     "mongoose": "^4.5.0",
+    "path": "^0.12.7",
     "shortid": "^2.2.6",
+    "url": "^0.11.0",
     "util": "^0.10.3"
   },
   "devDependencies": {}
